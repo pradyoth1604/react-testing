@@ -1,6 +1,8 @@
 export const Application = () => {
   return (
     <div>
+        <h1>Heading</h1>
+        <h2>Section 1</h2>
       <form>
         <div>
           <label htmlFor="name">Name:</label>
