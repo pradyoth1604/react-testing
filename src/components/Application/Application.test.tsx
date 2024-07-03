@@ -1,10 +1,10 @@
 import { Application } from "./Application";
-import { render,screen } from "@testing-library/react";
+import { logRoles, render,screen } from "@testing-library/react";
 
 describe("Renders Correctly",()=>{
     test("renders Input Box",()=>{
-        render(<Application/>);
-
+        const view = render(<Application/>);
+        logRoles(view.container);
         const headingElement = screen.getByRole("heading",{
             level:1
         });
