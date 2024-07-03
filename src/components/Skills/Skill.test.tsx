@@ -1,15 +1,17 @@
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, logRoles, render, screen } from "@testing-library/react";
 import { Skills } from "./Skills";
 
 describe("renders",()=>{
     let skills = ["html", "Css", "JavaScript"];
     test("renders correctly",()=>{
+        // screen.debug();
         render(<Skills skills={skills} />)
         const skillsElement = screen.getByRole("list");
         expect(skillsElement).toBeInTheDocument();
 
         const skillsElements = screen.getAllByRole("listitem");
         expect(skillsElements).toHaveLength(skills.length);
+        // screen.debug();
     });
     
     test("renders Login Button",()=>{
@@ -42,7 +44,8 @@ describe("renders",()=>{
       });
 
     test("StartLearning Button eventually displayed", async ()=>{
-        render(<Skills skills={skills} />);
+        const view = render(<Skills skills={skills} />);
+        logRoles(view.container);
         const startLearningButtonEle = await screen.findByRole("button",{name:"StartLearning"},{timeout:2000});
         expect(startLearningButtonEle).toBeInTheDocument();
     })
